@@ -2,6 +2,8 @@
 import  { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Stars from './Stars';
+import SocialIcons from './SocailIcons';
 
 
 const choices = ['Paper', 'Rock', 'Scissors'];
@@ -47,7 +49,9 @@ const Game = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-8 ">
+    <div className="flex flex-col p-5 vh-100  my-10 mx-auto   bg-transparent  rounded-md items-center justify-center">
+      
+      <SocialIcons/>
        <ToastContainer 
         position="top-right"
         autoClose={2000}
@@ -59,8 +63,9 @@ const Game = () => {
         draggable
         pauseOnHover
       />
-
-      <h1 className="text-3xl font-bold mb-4">Paper Rock Scissors</h1>
+  <div className=' bg-transparent rounded-3xl max0151
+  7-w-xl max-h-xl  p-10 border-t-2 border-green-600  shadow-xl justify-center'>
+    <h1 className="text-3xl font-bold p-4"> <span className='text-green-600'>Paper</span> <span className='text-purple-700'>Rock</span>  <span className='text-red-600'>Scissors</span>  </h1>
       <div className="flex justify-around w-2/3 mb-4">
         {choices.map((choice) => (
           <button
@@ -93,6 +98,16 @@ const Game = () => {
           <p>{computerPoints}</p>
         </div>
       </div>
+  </div>
+   
+
+
+      <div className=''>
+      <Stars/>
+
+      </div>
+     
+
     </div>
   );
 };
