@@ -3,10 +3,38 @@ import  { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Stars from './Stars';
-import SocialIcons from './SocailIcons';
-
+import { FaHandPaper } from "react-icons/fa";
+import { FaHandScissors } from "react-icons/fa";
+import { FaHandRock } from "react-icons/fa";
+import sisor from "../public/sisor.jpg"
+import rock from "../public/rock.jpeg"
+import images from "../public/images.jpeg"
 
 const choices = ['Paper', 'Rock', 'Scissors'];
+const data =[
+  {
+    choice:"Paper",
+    svg:<FaHandPaper/>,
+    img:images
+  },
+
+  {
+    choice:"Rock",
+    svg:<FaHandRock/>,
+    img:rock
+
+
+  },
+  
+  {
+    choice:"Scissors",
+    svg:<FaHandScissors/>,
+    img:sisor
+
+
+  },
+  
+]
 
 const Game = () => {
   const [playerChoice, setPlayerChoice] = useState(null);
@@ -51,7 +79,6 @@ const Game = () => {
   return (
     <div className="flex flex-col p-5 vh-100  my-10 mx-auto   bg-transparent  rounded-md items-center justify-center">
       
-      <SocialIcons/>
        <ToastContainer 
         position="top-right"
         autoClose={2000}
@@ -63,39 +90,40 @@ const Game = () => {
         draggable
         pauseOnHover
       />
-  <div className=' bg-transparent rounded-3xl max0151
-  7-w-xl max-h-xl  p-10 border-t-2 border-green-600  shadow-xl justify-center'>
+  <div className=' bg-orange-50 bg-opacity-50 rounded-3xl max-w-xl  max-h-xl  p-10 border-t-2 border-green-600  shadow-xl justify-center'>
     <h1 className="text-3xl font-bold p-4"> <span className='text-green-600'>Paper</span> <span className='text-purple-700'>Rock</span>  <span className='text-red-600'>Scissors</span>  </h1>
-      <div className="flex justify-around w-2/3 mb-4">
-        {choices.map((choice) => (
+      <div className="flex justify-between bg-black p-4 rounded-xl mb-4">
+        {data.map((choice) => (
           <button
-            key={choice}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => chooseOption(choice)}
-          >
-            {choice}
+            key={choice.choice}
+            className="  text-white font-bold text-xl  rounded"
+            onClick={() => chooseOption(choice.choice)}
+          >{choice.choice}
+             {/* <span className=' mt-4'>{choice.svg}</span> */}
+            {/* <div className='justify-center items-center w-16  h-10 mx-auto'> </div> */}
+            <img className='w-[60px] h-[60px] rounded-full mt-4' src={choice.img} alt="" />
           </button>
         ))}
       </div>
-      <div className="flex justify-around w-2/3">
+      <div className="flex justify-between mt-4">
         <div className="text-center">
-          <p className="text-lg font-semibold">You chose:</p>
-          <p>{playerChoice}</p>
+          <p className="text-lg font-semibold">You choose:</p>
+          <p className='text-xl font-serif font-semibold text-orange-600'>{playerChoice}</p>
         </div>
         <div className="text-center">
-          <p className="text-lg font-semibold">Computer chose:</p>
-          <p>{computerChoice}</p>
+          <p className="text-lg font-semibold">Computer chooses:</p>
+          <p className='text-xl font-serif font-semibold text-teal-500'>{computerChoice}</p>
         </div>
       </div>
-      {result && <p className="text-2xl font-bold mt-4">{result}</p>}
-      <div className="flex justify-around w-2/3 mt-4">
-        <div>
-          <p className="text-lg font-semibold">Your points:</p>
-          <p>{userPoints}</p>
+      {result && <p className="text-2xl font-bold text-center text-cyan-700  mt-4">{result}</p>}
+      <div className="mt-4">
+        <div className='flex'>
+          <p className=" text-xl font-serif font-semibold text-rose-700">Your points:</p>
+          <p className=" text-xl font-serif font-semibold text-black">{userPoints}</p>
         </div>
-        <div>
-          <p className="text-lg font-semibold">Computer&apos;s points:</p>
-          <p>{computerPoints}</p>
+        <div  className='flex'>
+          <p className=" text-xl font-serif font-semibold text-pink-600">Computer&apos;s points:</p>
+          <p className=" text-xl font-serif font-semibold text-black">{computerPoints}</p>
         </div>
       </div>
   </div>

@@ -16,6 +16,7 @@
     "@react-three/drei": "^9.105.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-three-fiber": "^6.0.13",
     "react-toastify": "^10.0.5",
     "three": "^0.163.0"
